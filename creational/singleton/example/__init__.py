@@ -5,14 +5,15 @@
 # @Mail   : 15869300264@163.com
 
 
-class Nation():
+class Nation(object):
     """
     国家类
+    这里可以将Nation定义为一个抽象类，但是由于我们在metaclass.py中使用了元类来实现单例，这里继承抽象类会导致元类冲突，所以没有使用抽象类
+    meatclass=ABCMeta
     """
 
     def __init__(self, name: str = None):
         self._name = name
-        self._num = 0
 
     @property
     def name(self) -> str:
@@ -49,18 +50,17 @@ class Citizen(object):
         return self._nation.name
 
 
-def test(citizen_one_name: str, citizen_two_name: str, nation_class: Nation) -> None:
+def test(citizen_one_name: str, citizen_two_name: str, nation_class: Nation.__subclasses__()) -> None:
     """
     测试函数
     :param citizen_one_name: 公民一的名字
     :param citizen_two_name: 共鸣二的名字
-    :param nation_class: 国家类
+    :param nation_class: 已实现单例的国家类的子类
     :return:
     """
     # 创建公民一
     citizen_one = Citizen(citizen_one_name)
     # 创建一个国家实例
-    # 在ide里，nation_class()会提示没有实现__call__方法，实际上，这里执行的是类的实例化，没有调用__call__方法
     nation_one = nation_class()
     citizen_one.nation = nation_one
     # 创建公民二

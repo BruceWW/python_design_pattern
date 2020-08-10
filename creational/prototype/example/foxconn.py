@@ -3,8 +3,8 @@
 # @Date   : 2020/8/7
 # @Author : Bruce Liu /Lin Luo
 # @Mail   : 15869300264@163.com
-from creational.prototype.example import Prototype, compare
 from creational import Phone
+from creational.prototype.example import Prototype, compare
 
 
 class Logo(Prototype):

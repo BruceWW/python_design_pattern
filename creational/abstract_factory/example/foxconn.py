@@ -78,6 +78,7 @@ class Foxconn(object):
         phone.name = factory.name()
         print(f'a phone was produced and the phone factory is {factory.__class__.__name__}')
         print(phone.information())
+        print()
 
 
 if __name__ == '__main__':

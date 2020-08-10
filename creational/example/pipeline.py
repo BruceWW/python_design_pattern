@@ -5,7 +5,7 @@
 # @Mail   : 15869300264@163.com
 
 from creational.example.supplier import SupplierBuilder
-from creational.example.component import Os, Logo, Mould
+from creational.example.component import Os, Logo, Mould, Product
 
 
 class SingletonPipeline(object):
@@ -32,20 +32,20 @@ class Pipeline(SingletonPipeline):
     """
 
     def produce_phone(self, supplier: SupplierBuilder.__subclasses__(), os: Os.__subclasses__(),
-                      logo: Logo.__subclasses__(), mould: Mould.__subclasses__()):
+                      logo: Logo.__subclasses__(), mould: Mould.__subclasses__()) -> Product:
         """
-
-        :param supplier:
-        :param os:
-        :param logo:
-        :param mould:
+        手机制造方法，使用工厂模式，传入对应的类进行查u你更加爱你
+        :param supplier: 供应商类
+        :param os: 操作系统类
+        :param logo: logo类
+        :param mould: 模具类
         :return:
         """
         print(f'this is pipeline with id: {id(self)}')
         print('begin to produce a phone')
-        print(f'stage 1: create the phone mould, model: {mould.__class__.__name__}')
+        print(f'stage 1: create the phone mould, model: {mould.__name__}')
         phone = mould()
-        print(f'stage 2: order a mother board from supplier: {supplier.__class__.__name__}')
+        print(f'stage 2: order a mother board from supplier: {supplier.__name__}')
         mother_board_supplier = supplier()
         print(f'\t mother board supplier begin to build up the mother board')
         mother_board_supplier.add_cpu()
@@ -54,7 +54,7 @@ class Pipeline(SingletonPipeline):
         print(f'\t mother board build up complete')
         print(f'\t get mother board from supplier')
         mother_board = mother_board_supplier.get_mother_board()
-        print(f'stage 3: get a copy of os and logo from os:{os.__class__.__name__} and logo:{logo.__class__.__name__}')
+        print(f'stage 3: get a copy of os and logo from os:{os.__name__} and logo:{logo.__name__}')
         os_copy = os().clone()
         logo_copy = logo().clone()
         print(f'stage 4: install os into mother_board')
@@ -66,3 +66,6 @@ class Pipeline(SingletonPipeline):
         print('the phone had benn produced')
         print('here are the information:')
         phone.information()
+        product = Product()
+        product.mould = phone
+        return product

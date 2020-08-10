@@ -76,6 +76,7 @@ class Foxconn(object):
         builder.add_name()
         print(f'a phone was produced and the phone builder is {builder.__class__.__name__}')
         print(builder.get_phone().information())
+        print()
 
 
 if __name__ == '__main__':

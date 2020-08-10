@@ -347,4 +347,21 @@ class Mould(Component):
         print(f'os: {self.mother_board.storage.os.info}')
         print(f'cpu: {self.mother_board.cpu.info}')
         print(f'memory: {self.mother_board.memory.info}')
-        print(f'storage: {self.mother_board.storage}')
+        print(f'storage: {self.mother_board.storage.info}')
+
+
+class Product(Component):
+    """
+    产品类
+    """
+    def __init__(self):
+        super(Product, self).__init__()
+        self._mould = None
+
+    @property
+    def mould(self) -> Mould:
+        return self._mould
+
+    @mould.setter
+    def mould(self, mould: Mould) -> None:
+        self._mould = mould

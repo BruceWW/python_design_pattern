@@ -10,9 +10,8 @@ from creational import Phone
 
 class PhoneFactory(metaclass=ABCMeta):
     """
-    抽象工厂类，里面提供了所需的抽象方法
-    继承了抽象工厂类的子类，需要实现所有抽象方法
-    抽象工厂着重于一个系列的产品创建，创建的对象直接返回
+    手机类，里面提供了所需的抽象方法
+    这是个抽象工厂，我们使用工厂模式来实现抽象工厂的创建
     """
 
     @staticmethod

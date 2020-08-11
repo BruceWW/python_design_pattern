@@ -4,8 +4,8 @@
 # @Author : Bruce Liu /Lin Luo
 # @Mail   : 15869300264@163.com
 from creational import Phone
-from creational.factory_method.example import PhoneFactory
-from creational.factory_method.example import iPhoneKit, SamsungS20Kit, HuaweiMate30Kit
+from creational.factory_pattern.example import PhoneFactory
+from creational.factory_pattern.example import iPhoneKit, SamsungS20Kit, HuaweiMate30Kit
 
 
 class Product(object):
@@ -14,7 +14,7 @@ class Product(object):
     """
 
     @staticmethod
-    def produce(phone_name: str) -> Phone.__subclasses__():
+    def product(phone_name: str) -> Phone.__subclasses__():
         """
         根据传入的数据返回对应的手机类
         :param phone_name:
@@ -64,10 +64,10 @@ if __name__ == '__main__':
     # 获取一个富士康，可以不进行实例化
     foxconn = Foxconn()
     # 调用工厂方法，获取iphone类
-    iphone = Product.produce('iphone')
+    iphone = Product.product('iphone')
     # 成产一台iphone
     foxconn.produce(iphone)
-    samsung = Product.produce('samsung')
+    samsung = Product.product('samsung')
     foxconn.produce(samsung)
-    huawei = Product.produce('huawei')
+    huawei = Product.product('huawei')
     foxconn.produce(huawei)

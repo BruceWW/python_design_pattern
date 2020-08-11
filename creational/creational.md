@@ -5,7 +5,7 @@
 然后会提供一个demo，在这个demo中将作为一个黑心小作坊老板，使用五种创建模式来生产手机<br/>
 #### [抽象工厂](./abstract_factory/abstract_factory.md)
 #### [生成器](./builder/builder.md)
-#### [工厂模式](./factory_method/factory_method.md)
+#### [工厂模式](factory_pattern/factory_method.md)
 #### [原型模式](./prototype/prototype.md)
 #### [单例模式](./singleton/singleton.md)
 

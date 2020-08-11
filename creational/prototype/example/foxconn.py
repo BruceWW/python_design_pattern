@@ -4,6 +4,7 @@
 # @Author : Bruce Liu /Lin Luo
 # @Mail   : 15869300264@163.com
 from creational import Phone
+from copy import deepcopy
 from creational.prototype.example import Prototype, compare
 
 
@@ -20,8 +21,9 @@ class Logo(Prototype):
         实现clone方法
         :return:
         """
-        logo = Logo(self._info)
-        return logo
+        # logo = Logo(self._info)
+        # return logo
+        return deepcopy(self)
 
 
 class OS(Prototype):
@@ -38,8 +40,10 @@ class OS(Prototype):
         :return:
         """
         # 返回一个os对象，被返回的对象与原始对象所有属性都一样，但是是两个不同的实例
-        os = OS(self._info)
-        return os
+        # os = OS(self._info)
+        # return os
+        # 建议使用python的copy方法
+        return deepcopy(self)
 
 
 class Foxconn(object):

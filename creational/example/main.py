@@ -3,7 +3,6 @@
 # @Date   : 2020/8/6
 # @Author : Bruce Liu /Lin Luo
 # @Mail   : 15869300264@163.com
-# from .contract import Contract
 from creational.example.contract import Contract
 from creational.example.component import MotherBoardHigh, OsNew, LogoAlpha, Mould, MotherBoardLow, OsPre, LogoBeta
 

@@ -19,7 +19,7 @@ class ProgramAdaptee(object):
         self._user = user
         self._age = age
 
-    def _location(self, lon: float, lat: float):
+    def _location(self, lon: float, lat: float) -> None:
         """
         获取用户位置，并向服务器上传
         :param lon: 经度
@@ -29,7 +29,7 @@ class ProgramAdaptee(object):
         print(f"the lon: {lon} it's type is {type(lon)} and lat is: {lat} it's type is {type(lat)}")
         self._post(lon, lat)
 
-    def _post(self, lon: float, lat: float):
+    def _post(self, lon: float, lat: float) -> None:
         """
         向服务器上传用户信息及位置
         :param lon: 经度

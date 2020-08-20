@@ -109,3 +109,4 @@ class Program(ProgramAbstraction):
         # 执行上传操作
         print(f'get location info lon:{lon}, lat:{lat}')
 ```
+[具体实现代码](./example/main.py)

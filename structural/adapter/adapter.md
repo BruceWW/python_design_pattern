@@ -61,3 +61,4 @@ class ProgramAlphaAdapter(ProgramAdaptee, AlphaTarget):
         # 将字符串转为浮点型，并调用_location方法
         self._location(float(lon), float(lat))
 ``` 
+[具体实现代码](./example/main.py)

@@ -6,3 +6,7 @@
 ### [原型模式](./creational/prototype/prototype.md)
 ### [单例模式](./creational/singleton/singleton.md)
 ## [结构模式](./structural/structural.md)
+### [适配器](./structural/adapter/adapter.md)
+### [桥接模式](./structural/bridge/bridge.md)
+### [组合模式](./structural/composite/composite.md)
+### [装饰器/代理模式](./structural/decorator_and_proxy/decorator_and_proxy.md)

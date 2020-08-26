@@ -75,7 +75,7 @@ def singleton_proxy(cls):
 
     return inner
 ```
-[具体实现代码](./example/method_proxy.py)
+[具体实现代码](./example/method_proxy.py)<br/>
 
 类修饰器代码如下<br/>
 ```python
@@ -108,7 +108,7 @@ class SingletonProxy(object):
             print('return instance by created')
             return self._instances[self._cls]
 ```
-[具体实现代码](./example/class_proxy.py)
+[具体实现代码](./example/class_proxy.py)<br/>
 
 ### 3、元类方法
 python中一切皆为对象，而元类是python中一个特殊的对象，它实际上是定义类的类<br/>
@@ -130,7 +130,7 @@ class SingletonMetaClass(type):
             print('return instance from metaclass')
             return cls._instances[cls]
 ```
-[具体实现代码](./example/meatclass.py)
+[具体实现代码](./example/meatclass.py)<br/>
 
 
 ### 4、import方法

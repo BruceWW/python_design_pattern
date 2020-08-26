@@ -12,3 +12,56 @@
 ## 场景
 ## 优缺点
 ## 实现
+下面的demo会展示两个函数修饰器（代理）的实现<br/>
+实现过程中使用了wraps来保持被修饰对象属性的一致性<br/>
+```python
+from functools import wraps
+
+
+def function_decorator(func):
+    """
+    函数修饰器，修饰器不接受其他参数
+    :param func:
+    :return:
+    """
+    # 使用wraps修饰器，将被修饰函数的属性赋予修饰器
+    @wraps(func)
+    def inner(*args, **kwargs):
+        """
+        修饰器内部函数
+        :param args:
+        :param kwargs:
+        :return:
+        """
+        # 修饰器添加的相关逻辑
+        func(*args, **kwargs)
+        # 修饰器添加的相关逻辑
+
+    return inner
+
+
+def function_decorator_with_params(*args, **kwargs):
+    """
+    修饰器函数，修饰器接受其他参数
+    :param args:
+    :param kwargs:
+    :return:
+    """
+    def wrapper(func):
+        # 使用wraps修饰器，将被修饰函数的属性赋予修饰器
+        @wraps(func)
+        def inner(*inner_args, **inner_kwargs):
+            """
+            修饰器内部函数
+            :param inner_args:
+            :param inner_kwargs:
+            :return:
+            """
+            # 修饰器添加的相关逻辑
+            func(*inner_args, **inner_kwargs)
+            # 修饰器添加的相关逻辑
+
+        return inner
+
+    return wrapper
+```

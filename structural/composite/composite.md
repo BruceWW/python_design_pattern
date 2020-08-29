@@ -20,6 +20,12 @@
 demo1<br/>
 继承力扣的二叉树Node，并新增一个parent属性，作为父节点<br/>
 然后再生成一个一个拥有7个节点的搜索二叉树<br/>
+
+demo2<br/>
+我们提供一个component的类，作为组合模式的基础类<br/>
+同时component类中拥有name、price和sub_components三个属性，分别表示这个组件的名称、价格以及自组件<br/>
+调用get_info可以获取组件的基础信息以及自组件信息<br/>
+作为叶子节点的组件sub_components属性为空，使得在调用get_info方法时，不会去读取叶子节点的子节点，以完成组合模式的目的<br/>
 ```python
 from structural.composite.example import Node
 
@@ -63,8 +69,52 @@ level_1_left.right = level_2_right_1
 level_1_right.left = level_2_left_2
 level_1_right.right = level_2_right_2
 ```
+[具体实现代码](./example/binary_tree.py)
 
 demo2<br/>
 ```python
+class Component(object):
+    def __init__(self, name: str, price: int, sub_components: iter = None):
+        self.sub_components = sub_components
+        self.name = name
+        self.price = price
 
+    def get_sub_component_info(self, level: int = 1):
+        """
+        获取子节点组件信息
+        :param level:
+        :return:
+        """
+        for sub_component in self.sub_components:
+            sub_component.get_info(level + 1)
+
+    def get_info(self, level: int = 0):
+        """
+        获取设备信息，同时获取子节点信息
+        :param level:
+        :return:
+        """
+        space = '\t' * level
+        print(f'{space} component name: {self.name}')
+        print(f'{space} component price: {self.price}')
+        if self.sub_components:
+            print(f'{space} here are the sub components of {self.name}')
+            self.get_sub_component_info(level)
+
+def make_pro_composites():
+    """
+    组合模式样例1
+    :return:
+    """
+    phone_pro = Component('phone pro', 4999)
+    screen_national = Component('national 2k screen', 300)
+    camera = Component('leica adjusted camera', 250)
+    mother_board = Component('pro mother board', 400)
+    soc = Component('990', 200)
+    memory = Component('64G', 80)
+    battery = Component('5000mah', 300)
+    phone_pro.sub_components = [screen_national, camera, mother_board, battery]
+    mother_board.sub_components = [soc, memory]
+    return phone_pro
 ```
+[具体实现代码](./example/phone.py)

@@ -5,11 +5,29 @@
 # @Mail   : 15869300264@163.com
 class Component(object):
     def __init__(self, name: str, price: int, sub_components: iter = None):
-        self.sub_components = sub_components
+        if sub_components:
+            self.sub_components = sub_components
+        else:
+            self.sub_components = []
         self.name = name
         self.price = price
 
-    def get_sub_component_info(self, level: int = 1):
+    def add_sub_components(self, sub_component: object) -> None:
+        """
+        添加子组件
+        :param sub_component:
+        :return:
+        """
+        self.sub_components.append(sub_component)
+
+    def get_sub_components_obj(self):
+        """
+        获取子组件的迭代器
+        :return:
+        """
+        yield self.sub_components
+
+    def get_sub_component_info(self, level: int = 1) -> None:
         """
         获取子节点组件信息
         :param level:
@@ -18,7 +36,7 @@ class Component(object):
         for sub_component in self.sub_components:
             sub_component.get_info(level + 1)
 
-    def get_info(self, level: int = 0):
+    def get_info(self, level: int = 0) -> None:
         """
         获取设备信息，同时获取子节点信息
         :param level:

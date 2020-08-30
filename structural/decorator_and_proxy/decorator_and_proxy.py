@@ -12,6 +12,7 @@ def function_decorator(func):
     :param func:
     :return:
     """
+
     # 使用wraps修饰器，将被修饰函数的属性赋予修饰器
     @wraps(func)
     def inner(*args, **kwargs):
@@ -35,6 +36,7 @@ def function_decorator_with_params(*args, **kwargs):
     :param kwargs:
     :return:
     """
+
     def wrapper(func):
         # 使用wraps修饰器，将被修饰函数的属性赋予修饰器
         @wraps(func)
@@ -53,3 +55,58 @@ def function_decorator_with_params(*args, **kwargs):
 
     return wrapper
 
+
+class Card(object):
+    """
+    卡片类
+    """
+
+    def __init__(self, name: str, limited: bool = False, limited_num: int = 100000, surplus: int = 0):
+        """
+        初始化一张卡
+        :param limited: 是否限额
+        :param limited_num: 限额数量
+        :param surplus: 余额
+        """
+        self.name = name
+        # 是否限额
+        self.limited = limited
+        # 限额总数
+        self.limited_num = limited_num
+        # 余额
+        self.surplus = surplus
+        # 本次操作的金额
+        self.operator_num = 0
+
+    def __add__(self, other) -> bool:
+        """
+        将other中本次操作的金额转移到self对象中
+        即从other中划一部分钱到本卡
+        :param other:
+        :return:
+        """
+        # 判断是否可以转账
+        if (self.limited and self.surplus + other.operator_num > self.limited_num) or other.surplus - other.operator_num < 0:
+            return False
+        else:
+            # 可以转入
+            self.surplus += other.operator_num
+            other.surplus -= other.operator_num
+            other.operator_num = 0
+            return True
+
+    def __sub__(self, other) -> bool:
+        """
+        将本卡中的一部分钱转到otehr中
+        :param other:
+        :return:
+        """
+        # 判断是否可以转账
+        if self.surplus - self.operator_num >= 0 and (
+                not other.limited or other.surplus + self.operator_num <= other.limited_num):
+            self.surplus -= self.operator_num
+            other.surplus += self.operator_num
+            self.operator_num = 0
+            return True
+        else:
+            return False

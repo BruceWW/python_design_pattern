@@ -73,3 +73,9 @@ def print_node(root: Node.__subclasses__()):
     for i in result[:2 * n - 1]:
         print(i)
     pass
+
+
+class Node(object):
+    def __init__(self, val):
+        self.val = val
+        self.next = None

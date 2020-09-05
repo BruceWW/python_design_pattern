@@ -22,7 +22,7 @@ class Component(object):
 
     def get_sub_components_obj(self):
         """
-        获取子组件的迭代器
+        获取子组件的生成器
         :return:
         """
         yield self.sub_components

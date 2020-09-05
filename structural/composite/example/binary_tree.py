@@ -3,7 +3,7 @@
 # @Date   : 2020/8/24
 # @Author : Bruce Liu /Lin Luo
 # @Mail   : 15869300264@163.com
-from structural.composite.example import Node,print_node
+from structural.composite.example import Node, print_node
 
 
 class NodeWithParent(Node):

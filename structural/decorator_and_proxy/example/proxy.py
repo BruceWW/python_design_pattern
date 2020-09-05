@@ -45,7 +45,7 @@ class Card(object):
 
     def __sub__(self, other) -> bool:
         """
-        将本卡中的一部分钱转到otehr中
+        将本卡中的一部分钱转到other中
         :param other:
         :return:
         """

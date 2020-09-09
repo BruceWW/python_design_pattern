@@ -222,6 +222,7 @@ if __name__ == '__main__':
     print(f"Catty's surplus after trans: {obj.query('Catty')}")
     print(f"Frank's surplus after trans: {obj.query('Frank')}")
 
+    print()
     # 余额不足，转账失败
     print(f"Walk's surplus before trans: {obj.query('Walk')}")
     print(f"Bruce's surplus before trans: {obj.query('Bruce')}")
